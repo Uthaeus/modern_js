@@ -1,0 +1,25 @@
+
+
+async function queryApis() {
+  try {
+    const postsPromise = fetch('https://api.dailysmarty.com/posts');
+    const posts = await postsPromise.then(res => res.json());
+    console.log(posts);
+      // => returns an array of posts from dailysmarty
+  } catch(err) {
+    console.log(err);
+    console.log('There was an error with the dailysmarty api');
+  }
+  
+  try {
+    const reposPromise = fetch('https://api.github.com/users/jordanhudgens/repos');
+    const repos = await reposPromise.then(res => res.json());
+    console.log(repos);
+      // => returns an array of repos from github
+  } catch(err) {
+    console.log(err);
+    console.log('There was an error with the github api');
+  }
+}
+
+queryApis();
